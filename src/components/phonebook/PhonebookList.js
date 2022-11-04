@@ -2,16 +2,15 @@ import PropTypes from 'prop-types';
 import man from './img/man.jpg';
 import woman from './img/woman.jpg';
 
-function icon(gender) {
-  if (gender === 'man') {
-    return <img src={man} alt="contact-icon" className="gender-icon" />;
-  }
-  if (gender === 'woman') {
-    return <img src={woman} alt="contact-icon" className="gender-icon" />;
-  }
-}
-
 export const PhonebookList = ({ items, onRemove }) => {
+  function icon(gender) {
+    if (gender === 'man') {
+      return <img src={man} alt="contact-icon" className="gender-icon" />;
+    }
+    if (gender === 'woman') {
+      return <img src={woman} alt="contact-icon" className="gender-icon" />;
+    }
+  }
   const itemList = items.map(({ id, name, number, gender }) => {
     return (
       <li key={id} className="list-item">
