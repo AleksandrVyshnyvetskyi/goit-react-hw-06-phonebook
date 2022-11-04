@@ -106,10 +106,32 @@
     align-items: center;
 }
 
+.form-gender label {
+    cursor: pointer;
+}
+
 .form-gender__btn {
     width: 20px;
     height: 20px;
     margin-left: 10px;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border-radius: 50%;
+
+    border: 2px solid #8bd3e1;
+    transition: 0.2s all linear;
+    outline: none;
+
+    position: relative;
+    top: 4px;
+}
+
+.form-gender__btn:checked {
+    border: 10px solid #fda40a;
 }
 
 .gender-icon {

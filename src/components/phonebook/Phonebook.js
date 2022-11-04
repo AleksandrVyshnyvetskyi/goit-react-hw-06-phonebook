@@ -38,6 +38,8 @@ export function Phonebook({ onAddContacs }) {
     setName('');
     setNumber('');
     setGender('');
+    console.log(gender);
+    // console.log(setGender);
   };
 
   let nameId = nanoid();
@@ -81,6 +83,7 @@ export function Phonebook({ onAddContacs }) {
             id="man"
             value="man"
             onChange={handleChange}
+            required
           ></input>
         </div>
         <div>
@@ -92,6 +95,7 @@ export function Phonebook({ onAddContacs }) {
             id="woman"
             value="woman"
             onChange={handleChange}
+            required
           ></input>
         </div>
       </div>
