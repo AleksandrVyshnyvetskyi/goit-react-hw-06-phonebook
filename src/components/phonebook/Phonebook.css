@@ -139,5 +139,6 @@
     border: 2px solid #fda40a;
     border-radius: 50%;
     width: 50px;
+    height: 50px;
     box-shadow: 0px 5px 10px 6px rgba(139, 211, 225, 0.2);
 }

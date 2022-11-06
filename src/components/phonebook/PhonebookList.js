@@ -1,19 +1,26 @@
-import PropTypes from 'prop-types';
+import { removeContact } from 'redux/contacts/contactsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import filterContact from 'redux/contacts/contactsSelector';
 import man from './img/man.jpg';
 import woman from './img/woman.jpg';
+import nogender from './img/nogender.png';
 
-export const PhonebookList = ({ items, onRemove }) => {
+export const PhonebookList = () => {
   function icon(gender) {
     if (gender === 'man') {
       return <img src={man} alt="contact-icon" className="gender-icon" />;
-    }
-    if (gender === 'woman') {
+    } else if (gender === 'woman') {
       return <img src={woman} alt="contact-icon" className="gender-icon" />;
+    } else {
+      return <img src={nogender} alt="contact-icon" className="gender-icon" />;
     }
   }
-  const itemList = items.map(({ id, name, number, gender }) => {
+  const dispatch = useDispatch();
+  const itemList = useSelector(filterContact);
+  const oneItemPhonebook = itemList.map(({ id, name, number, gender }) => {
     return (
       <li key={id} className="list-item">
+        {' '}
         {icon(gender)}
         <p>
           {name}: {number}
@@ -21,18 +28,14 @@ export const PhonebookList = ({ items, onRemove }) => {
         <button
           className="delete-btn"
           type="button"
-          onClick={() => onRemove(id)}
+          onClick={() => dispatch(removeContact(id))}
         >
+          {' '}
           Delete
         </button>
       </li>
     );
   });
 
-  return <ul>{itemList}</ul>;
-};
-
-PhonebookList.propTypes = {
-  items: PropTypes.array,
-  onRemove: PropTypes.func,
+  return <ul>{oneItemPhonebook}</ul>;
 };

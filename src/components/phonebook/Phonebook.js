@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/contactsSlice';
+import { filterNameContact } from 'redux/filter/filterSlice';
 
-export function Phonebook({ onAddContacs }) {
+export function Phonebook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [gender, setGender] = useState('');
+  const contacts = useSelector(filterNameContact);
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -34,12 +39,10 @@ export function Phonebook({ onAddContacs }) {
       number,
       gender,
     };
-    onAddContacs(contact);
     setName('');
     setNumber('');
     setGender('');
-    console.log(gender);
-    // console.log(setGender);
+    dispatch(addContact(contact));
   };
 
   let nameId = nanoid();
