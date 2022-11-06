@@ -5,7 +5,7 @@ import man from './img/man.jpg';
 import woman from './img/woman.jpg';
 import nogender from './img/nogender.png';
 
-export const PhonebookList = () => {
+export default function PhonebookList() {
   function icon(gender) {
     if (gender === 'man') {
       return <img src={man} alt="contact-icon" className="gender-icon" />;
@@ -38,4 +38,4 @@ export const PhonebookList = () => {
   });
 
   return <ul>{oneItemPhonebook}</ul>;
-};
+}

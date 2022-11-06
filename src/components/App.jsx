@@ -1,6 +1,6 @@
-import { Phonebook } from "./phonebook/Phonebook";
-import {PhonebookFilter} from './phonebook/PhonebookFilter';
-import {PhonebookList} from './phonebook/PhonebookList';
+import Phonebook from "./phonebook/Phonebook";
+import PhonebookFilter from './phonebook/PhonebookFilter';
+import PhonebookList from './phonebook/PhonebookList';
 import './phonebook/Phonebook.css';
 
   export function App() {

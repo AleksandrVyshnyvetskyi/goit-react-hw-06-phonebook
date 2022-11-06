@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'redux/filter/filterSelector';
 import { filterContact } from 'redux/filter/filterSlice';
 
-export const PhonebookFilter = () => {
+export default function PhonebookFilter() {
   const filterId = nanoid();
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
@@ -26,4 +26,4 @@ export const PhonebookFilter = () => {
       />
     </form>
   );
-};
+}

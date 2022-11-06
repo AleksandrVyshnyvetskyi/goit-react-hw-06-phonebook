@@ -2,14 +2,19 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsSlice';
-import { filterContact } from 'redux/filter/filterSlice';
+import filterContact from 'redux/contacts/contactsSelector';
 
-export function Phonebook() {
+export default function Phonebook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [gender, setGender] = useState('');
-  // const contacts = useSelector(filterContact);
+  const contacts = useSelector(filterContact);
   const dispatch = useDispatch();
+
+  const isDuplicate = contact => {
+    const result = contacts.find(item => item.name === contact.name);
+    return result;
+  };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -32,13 +37,6 @@ export function Phonebook() {
     }
   };
 
-  // const isDublicate = contact => {
-  //   const result = contacts.find(
-  //     contactItem => contactItem.name === contact.name
-  //   );
-  //   return result;
-  // };
-
   const handleSabmit = event => {
     event.preventDefault();
     const contact = {
@@ -49,9 +47,9 @@ export function Phonebook() {
     setName('');
     setNumber('');
     setGender('');
-    // if (isDublicate(contact)) {
-    //   return alert(`${contact.name} уже существует в списке контактов 🤪 `);
-    // }
+    if (isDuplicate(contact)) {
+      return alert(`${contact.name} уже существует в списке контактов 🤪`);
+    }
     dispatch(addContact(contact));
   };
 
