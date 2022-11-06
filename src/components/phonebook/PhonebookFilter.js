@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'redux/filter/filterSelector';
-import { filterNameContact } from 'redux/filter/filterSlice';
+import { filterContact } from 'redux/filter/filterSlice';
 
 export const PhonebookFilter = () => {
   const filterId = nanoid();
@@ -9,7 +9,7 @@ export const PhonebookFilter = () => {
   const dispatch = useDispatch();
 
   const filterChange = event => {
-    dispatch(filterNameContact(event.target.value));
+    dispatch(filterContact(event.target.value));
   };
 
   return (
